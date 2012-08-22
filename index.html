@@ -3,10 +3,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <script type="text/javascript" src="resources/knockoutjuice.js"></script>
         <script type="text/javascript">
-            /*
-            Require('RHasDimension','Observable','observable.Array','observable.Computed').$(function(){
+            Require('Observable','observable.Array','observable.Computed').$(function(){
                 Class('Test',{
-                    does: [RHasDimension],
                     has: {
                         myObsv: {
                             meta: Observable,
@@ -14,7 +12,8 @@
                             init: '123'
                         },
                         myArray: {
-                            meta: observable.Array
+                            meta: observable.Array,
+                            is: 'rw'
                         },
                         myComp: {
                             meta: observable.Computed,
@@ -33,7 +32,6 @@
                    $('#name').html(a.getMyComp()); 
                 });
             });
-            */
         </script>
     </head>
     <body>
