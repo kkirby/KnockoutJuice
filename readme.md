@@ -14,7 +14,8 @@ The methodology behind my intentions is that you shouldn't
 reinvent the wheel when there are already great wheels out there.
 
 I hope to incorporate a completely seamless framework that allows
-for widgets and view designing.
+for widgets and view designing along with controller routing and
+event tracking.
 
 ##Inspiration
 - [Joose](http://code.google.com/p/joose-js/)
