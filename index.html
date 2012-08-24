@@ -3,35 +3,46 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <script type="text/javascript" src="resources/knockoutjuice.js"></script>
         <script type="text/javascript">
-            Require('Observable','observable.Array','observable.Computed').$(function(){
-                Class('Test',{
-                    has: {
-                        myObsv: {
-                            meta: Observable,
-                            is:'rw',
-                            init: '123'
-                        },
-                        myArray: {
-                            meta: observable.Array,
-                            is: 'rw'
-                        },
-                        myComp: {
-                            meta: observable.Computed,
-                            is:'rw',
-                            get: function(){
-                                return String(this.getMyObsv()) + '456';
-                            },
-                            set: function(value){
-                                this.setMyObsv(value);
-                            }
-                        }
-                    }
-                });
-                a = new Test;
-                ko.computed(function(){
-                   $('#name').html(a.getMyComp()); 
-                });
-            });
+            Require('canvas.Plane','canvas.RRenderable','observable.Array').$(function(){
+				Class('List',{
+					does: [canvas.RRenderable],
+					has: {
+						items: {
+							meta: observable.Array,
+							is: 'rw'
+						}
+					},
+					methods: {
+						render: function(){
+							var contents = $('<ul></ul>');
+							ko.computed(function(){
+								var items = this.getItems();
+								contents.children().remove();
+								for(var i = 0; i < items.length; i++){
+									$('<li>' + items[i] + '</li>').appendTo(contents);
+								}
+							},this);
+							return contents;
+						}
+					}
+				});
+				
+				Class('Base',{
+					isa: canvas.Plane,
+					methods: {
+						getChildViews: function(){
+							return [
+								new List({
+									x: 100,
+									y: 200
+								})
+							];
+						}
+					}
+				});
+				
+				a = (new Base);
+			});
         </script>
     </head>
     <body>
