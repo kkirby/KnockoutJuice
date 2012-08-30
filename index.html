@@ -42,6 +42,11 @@
 				});
 				
 				a = (new Base);
+				var dim = a.getDimension();
+				dim.setWidth(500);
+				dim.setHeight(500);
+				a.getChildren()[0].getItems().push('Hello');
+				$(a.getRendered()).appendTo('body');
 			});
         </script>
     </head>
